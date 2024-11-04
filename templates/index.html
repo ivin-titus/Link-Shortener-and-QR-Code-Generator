@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Link Shortener and QR Code Maker</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Link Shortener &<br> QR Code Generator</h1>
+        <form method="POST" id="qrForm">
+            <div class="input-group">
+                <input type="text" 
+                        name="data" 
+                        id="qrInput" 
+                        placeholder="Enter URL or text..." 
+                        value="{{ request.form['data'] if request.form['data'] else '' }}"
+                        required>
+                {% if error_message %}
+                    <p class = "error-message" id="errorMessage" >{{error_message}} </p>
+                {% endif %}
+            </div>
+            <button type="submit">Generate</button>
+        </form>
+
+        <div class="shortened-url-container {% if not input_data or not is_valid_url(input_data) %}hidden{% endif %}" id="urlContainer">
+            <div class="url-box">
+                <input type="text" value="{{ input_data if input_data else '' }}" id="shortUrl" readonly>
+                <button type="button" class="copy-btn" id="copyBtn" onclick="copyUrl()">
+                    <i class="fas fa-copy"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="qr-container {% if not qr_image %}hidden{% endif %}" id="qrContainer">
+            <img src="{{ qr_image if qr_image else '' }}" alt="QR Code" class="qr-image" id="qrImage">
+            <a href="{{ qr_image if qr_image else '' }}" download="qrcode.png" id="downloadLink">
+                <button type="button" class="download-btn">Download QR Code</button>
+            </a>
+        </div>
+    </div>
+
+<footer class="footer-container">
+    <div class="copyright">© 2024 Ivin Techz</div>
+    <div class="social-links">
+
+        <a href="https://github.com/ivin-titus"  class="github" aria-label="GitHub">
+            <i class="fab fa-github"></i>
+        </a>
+        <a href="https://instagram.com/ivin_titus"  class="instagram" aria-label="Instagram">
+            <i class="fab fa-instagram"></i>
+        </a>
+        <a href="mailto:ivintitus@hotmail.com"  class="gmail" aria-label="Email">
+            <i class="fas fa-envelope"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/ivin-titus-49b403297"  class="linkedin" aria-label="LinkedIn">
+            <i class="fab fa-linkedin-in"></i>
+        </a>
+        <a href="https://t.me/@Ivin_VFX" class="telegram" aria-label="Telegram">
+            <i class="fab fa-telegram-plane"></i>
+        </a>
+        <a href="https://x.com/ivin_titus_"  class="x" aria-label="X (formerly Twitter)">
+            <i class="fab fa-x-twitter"></i>
+        </a>
+        <a href="https://www.youtube.com/@Ivin_Techz"  class="youtube" aria-label="YouTube">
+            <i class="fab fa-youtube"></i>
+        </a>
+    </div>
+</footer>
+
+<!--Lazy Loading-->
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const body = document.body;
+
+        const bgImageUrl = "{{ url_for('static', filename='images/bg.png') }}";
+
+        const bgImage = new Image();
+        bgImage.src = bgImageUrl;
+
+        bgImage.onload = function () {
+            body.style.backgroundImage = `url('${bgImageUrl}')`;
+            body.classList.add("bg-loaded");
+        };
+    });
+</script>
+
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+</body>
+</html>
