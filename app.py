@@ -55,7 +55,7 @@ def home():
             qr_image = f'data:image/png;base64,{img_str}'
             input_data = data
         
-    return render_template('index.html', qr_image=qr_image, input_data=input_data, error_message=error_message, is_valid_url=is_valid_url)
+    return render_template('indexi.html', qr_image=qr_image, input_data=input_data, error_message=error_message, is_valid_url=is_valid_url)
 
 
 if __name__ == '__main__':
