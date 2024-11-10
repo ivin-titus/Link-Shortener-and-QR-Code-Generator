@@ -77,8 +77,8 @@
     document.addEventListener("DOMContentLoaded", function () {
         const body = document.body;
 
-        // Using the versioned URL for cache busting only if the image is modified
-        const bgImageUrl = "{{ get_bg_image_url() }}";
+        // Use the cache-busted URL for the background image
+        const bgImageUrl = "{{ bg_image_url }}";
 
         const bgImage = new Image();
         bgImage.src = bgImageUrl;
@@ -89,6 +89,7 @@
         };
     });
 </script>
+
 
 
 <script src="{{ url_for('static', filename='js/script.js') }}"></script>
