@@ -1,9 +1,10 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, url_for
 import qrcode
 from io import BytesIO
 import base64
 from urllib.parse import urlparse
 import pyshorteners
+import os
 
 app = Flask(__name__)
 
@@ -22,6 +23,14 @@ def shorten_url(url):
         return s.tinyurl.short(url)
     except:
         return url
+
+def get_bg_image_url():
+    """Get the background image URL with cache-busting parameter if modified"""
+    image_path = os.path.join(app.static_folder, 'images', 'bg.png')
+    if os.path.exists(image_path):
+        modified_time = int(os.path.getmtime(image_path))  # Get last modified time as an integer
+        return url_for('static', filename='images/bg.png') + f'?v={modified_time}'
+    return url_for('static', filename='images/bg.png')
 
 @app.route('/', methods=['GET', 'POST'])
 def home():
@@ -55,8 +64,10 @@ def home():
             qr_image = f'data:image/png;base64,{img_str}'
             input_data = data
         
-    return render_template('index.html', qr_image=qr_image, input_data=input_data, error_message=error_message, is_valid_url=is_valid_url)
-
+    # Pass the versioned background image URL to the template
+    bg_image_url = get_bg_image_url()
+    
+    return render_template('index.html', qr_image=qr_image, input_data=input_data, error_message=error_message, is_valid_url=is_valid_url, bg_image_url=bg_image_url)
 
 if __name__ == '__main__':
     app.run(debug=True)
