@@ -72,13 +72,12 @@
 </footer>
 
 
-<!-- Lazy Loading -->
+<!--Lazy Loading-->
 <script>
     document.addEventListener("DOMContentLoaded", function () {
         const body = document.body;
 
-        // Use the cache-busted URL for the background image
-        const bgImageUrl = "{{ bg_image_url }}";
+        const bgImageUrl = "{{ url_for('static', filename='images/bg.png') }}";
 
         const bgImage = new Image();
         bgImage.src = bgImageUrl;
@@ -89,8 +88,6 @@
         };
     });
 </script>
-
-
 
 <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 
