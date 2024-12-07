@@ -9,6 +9,7 @@ This project is a **Link Shortener and QR Code Generator**, designed to simplify
 ## **Deployment**
 The project can be accessed live at:  
 **[Link Shortener and QR Code Generator](https://link-shortener-and-qr-code-generator.vercel.app/)**
+
 <br>
 
 ## **Features**
@@ -25,6 +26,7 @@ The project can be accessed live at:
 ## **Preview of the Application**
 ![App Preview](./static/images/demo.png)
 **&copy; 2024 Ivin Titus**
+
 <br>
 
 ## **Usage**
@@ -45,6 +47,7 @@ The project can be accessed live at:
 ### Example Scenarios
 - **Shorten a URL:** Input `https://example.com/very/long/url` to get a shortened version like `https://tinyurl.com/abc123`.
 - **Generate a QR Code:** Input "Hello, World!" to create a scannable QR code containing the text.
+
 <br>
 
 ## **Code Highlights**
@@ -119,7 +122,6 @@ The project can be accessed live at:
    Open `http://127.0.0.1:5000/` in your browser.
 
 <br>
-
 
 ## **Credits and License**
 
