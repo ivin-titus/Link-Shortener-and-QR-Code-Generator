@@ -9,6 +9,7 @@ This project is a **Link Shortener and QR Code Generator**, designed to simplify
 ## **Deployment**
 The project can be accessed live at:  
 **[Link Shortener and QR Code Generator](https://link-shortener-and-qr-code-generator.vercel.app/)**
+<br>
 
 ## **Features**
 
@@ -20,7 +21,6 @@ The project can be accessed live at:
   - Download generated QR codes as PNG images.  
 - **Responsive Design:** Mobile and desktop-friendly UI for an optimal user experience.  
 <br>
-
 ## **Preview of the Application**
 ![App Preview](./static/images/demo.png)
 **&copy; 2024 Ivin Titus**
