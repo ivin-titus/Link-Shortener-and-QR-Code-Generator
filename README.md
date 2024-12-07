@@ -21,6 +21,7 @@ The project can be accessed live at:
   - Download generated QR codes as PNG images.  
 - **Responsive Design:** Mobile and desktop-friendly UI for an optimal user experience.  
 <br>
+
 ## **Preview of the Application**
 ![App Preview](./static/images/demo.png)
 **&copy; 2024 Ivin Titus**
